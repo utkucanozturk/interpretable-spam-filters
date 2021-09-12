@@ -1,0 +1,71 @@
+site_name: Interpretable Spam Filters
+site_url: https://inter.com/
+site_author: Utku Can Ozturk
+site_description: >-
+  Static site hosting documentation for interpretable spam filters project curated by Utku Can Ozturk.
+
+nav:
+    - Home: index.md
+    - Introduction: intro.md
+    - Dataset: data.md
+    - Modeling: model.md
+    - Interpretable Machine Learning: iml.md
+    - Conclusion: conc.md
+
+plugins:
+  - search
+
+theme:
+      #name: superhero
+      name: material
+      icon:
+          logo: material/newspaper-minus
+      palette:
+        - media: "(prefers-color-scheme: light)"
+          scheme: default
+          primary: teal
+          toggle:
+            icon: material/weather-sunny
+            name: Switch to dark mode
+        - media: "(prefers-color-scheme: dark)"
+          scheme: slate
+          primary: teal
+          toggle:
+            icon: material/weather-night
+            name: Switch to light mode
+      font:
+        text: Roboto
+        code: Roboto Mono
+      features:
+        - content.code.annotate
+        - content.tabs.link
+        - navigation.instant
+        - navigation.tracking
+        - navigation.tabs
+        - navigation.top
+        - navigation.sections
+        - search.highlight
+        - search.share
+        - search.suggest
+
+copyright: Copyright &copy; 2020 - 2021 Utku Can Ozturk
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/utkucanozturk/
+    - icon: fontawesome/brands/linkedin-in
+      link: https://linkedin.com/in/utkucanozturk/
+    - icon: fontawesome/brands/instagram
+      link: https://instagram.com/utkucanozturk/
+    - icon: fontawesome/brands/facebook
+      link: https://facebook.com/ucozturk/
+
+markdown_extensions:
+  - def_list
+  - attr_list
+  - mdx_math
+
+extra_javascript: 
+    - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML

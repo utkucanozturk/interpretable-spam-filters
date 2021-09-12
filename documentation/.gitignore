@@ -1,0 +1,6 @@
+# Dependencies
+/__pycache__
+
+# Build files
+/build
+/site
