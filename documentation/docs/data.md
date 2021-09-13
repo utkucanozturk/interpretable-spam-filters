@@ -13,7 +13,7 @@ The dataset was taken from the [UCI Machine Learning Repository](http://archive.
 All emails in the dataset came from Hewlett-Packard (HP) employees.While spam emails came from various employees, non-spam emails were collected by George Forman, who works in Palo Alto in California (area code 650), hence the word `george` and the area code `650` are indicators of non-spam. Since the dataset contains some personalized features, it is possible to assess the effect of email personalization on spam classification.</br></br>
 
 <figure>
-  <img src="/assets/plots/strong_corr.png" width="600" />
+  <img src="assets/plots/strong_corr.png" width="600" />
   <figcaption>Correlations between variables with highest correlations</figcaption>
 </figure>
 
@@ -28,7 +28,7 @@ Other than that, there are little to no correlations among the frequency of word
 In addition, the correlations between the variables and the target variable (indicating spam/non-spam) are analyzed and those that have a higher absolute correlation coefficient than 0.2 are visualized below.</br></br>
 
 <figure>
-  <img src="/assets/plots/target_corr.png" width="600" />
+  <img src="assets/plots/target_corr.png" width="600" />
   <figcaption>Correlations between variables and target variables ranked by coefficient</figcaption>
 </figure>
 
@@ -37,7 +37,7 @@ In the graph above, you can see that the variables `your`, `num000`, `remove`, `
 Furthermore, the frequency of some interesting words and characters in spam and non-spam emails is demonstrated in the graph below. With this plot, we try to get a better sense of how these highly correlated words are distributed in the emails.</br></br>
 
 <figure>
-  <img src="/assets/plots/imp_var.png" width="600" />
+  <img src="assets/plots/imp_var.png" width="600" />
   <figcaption>Word and Character frequencies in spam and non-spam emails</figcaption>
 </figure>
 

@@ -42,7 +42,7 @@ $$k(u,v) = exp(-\gamma(||u-v||^2))$$
 A high \(\gamma\) leads to a wiggly boundary which might also lead to overfitting. As you can see in the image below, both parameters have  similar influences on the decision boundary and need to be balanced. As a wide range of combinations of `gamma` and `cost` might be suitable, we first tuned on a grid where `gamma` might take values in \([10^{-8}\), \(10^2]\) and `cost` in \([10^{-2}, 10^8]\). A combination close to gamma = 0.01 and cost = 10 was the most promising and therefore a second 5-fold CV was performed for gamma values in [0.001, 0.05] and cost values in [5, 50]. The results of the tuning can be found below. The highest AUC of 0.978 could be achieved with gamma  = 0.012 and cost = 13.33.  As it has shown in [this article](https://www.academia.edu/11678434/Efficient_Support_Vector_Machines_for_Spam_Detection_A_Survey){target=_blank}, Support Vector Machines (SVM) are a powerful, state-of-the-art method in machine learning to distinguish spam from non-spam. Thus, we will analyze how SVMs obtain their predictions in more detail in [Interpretable Machine Learning](iml.md) section.</br></br>
 
 <figure>
-  <img src="/assets/plots/tuning_svm.png" width="600" />
+  <img src="assets/plots/tuning_svm.png" width="600" />
   <figcaption>Performance of different cost and gamma combinations for SVM</figcaption>
 </figure>
 
@@ -64,7 +64,7 @@ The last non-interpretable method is xGradient Boosting (xgboost) which uses gra
 The distribution of 5-fold cross-validated AUC values for each model can be found in figure below. There you can also see that models which are inherently not interpretable, like SVM, random forest and xgboost outperformed explainable models like decision trees and logistic regression. It is very likely that email providers use such non-interpretable methods for their spam filters, especially since they are mostly interested in an accurate classification with as little false positives, i.e., emails that are wrongly classified as spam, as possible.</br></br>
 
 <figure>
-  <img src="/assets/plots/model_comparison.png" width="600" />
+  <img src="assets/plots/model_comparison.png" width="600" />
   <figcaption>Performance of prediction algorithms</figcaption>
 </figure>
 
@@ -87,6 +87,6 @@ A separate hyperparameter tuning procedure was performed for the non-personalize
 In the figure below, it can be seen that both SVM and Random Forest gain AUC when the personalized features are included. This is plausible, as knowing the name or workplace of the recipient is a strong indication that this email is from a known sender and not anonymous spam.</br></br>
 
 <figure>
-  <img src="/assets/plots/model_comparison_personalized.png" width="600" />
+  <img src="assets/plots/model_comparison_personalized.png" width="600" />
   <figcaption>Performance of SVM and random forest with personalized (all features) and non personalized features (removing "george", "hp", "num650")</figcaption>
 </figure>
