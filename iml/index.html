@@ -1,0 +1,837 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Static site hosting documentation for interpretable spam filters project curated by Utku Can Ozturk.">
+      
+      
+      
+        <meta name="author" content="Utku Can Ozturk">
+      
+      
+        <link rel="canonical" href="https://inter.com/iml/">
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
+    
+    
+      
+        <title>Interpretable Machine Learning - Interpretable Spam Filters</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.f7f47774.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
+      
+    
+    
+    
+    
+      
+
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="">
+  
+    
+    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
+    
+      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#interpretable-machine-learning" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Interpretable Spam Filters" class="md-header__button md-logo" aria-label="Interpretable Spam Filters" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 17v2h-8v-2h8m-2-6V8H4v3h16m-7 2v1.68c-.63.95-1 2.09-1 3.32 0 1.09.29 2.12.8 3H4a2 2 0 0 1-2-2V3l1.67 1.67L5.33 3 7 4.67 8.67 3l1.66 1.67L12 3l1.67 1.67L15.33 3 17 4.67 18.67 3l1.66 1.67L22 3v10.5a6.137 6.137 0 0 0-4-1.5c-1.23 0-2.37.37-3.32 1H13m-2 6v-6H4v6h7z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Interpretable Spam Filters
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Interpretable Machine Learning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      <form class="md-header__option" data-md-component="palette">
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+          
+            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
+            </label>
+          
+        
+          
+          
+          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="teal" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+          
+            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
+            </label>
+          
+        
+      </form>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7 0-.24-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91 1.61 0 2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08z"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href=".." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../intro/" class="md-tabs__link">
+      Introduction
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../data/" class="md-tabs__link">
+      Dataset
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../model/" class="md-tabs__link">
+      Modeling
+    </a>
+  </li>
+
+      
+        
+  
+  
+    
+  
+
+
+  <li class="md-tabs__item">
+    <a href="./" class="md-tabs__link md-tabs__link--active">
+      Interpretable Machine Learning
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../conc/" class="md-tabs__link">
+      Conclusion
+    </a>
+  </li>
+
+      
+    </ul>
+  </div>
+</nav>
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Interpretable Spam Filters" class="md-nav__button md-logo" aria-label="Interpretable Spam Filters" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 17v2h-8v-2h8m-2-6V8H4v3h16m-7 2v1.68c-.63.95-1 2.09-1 3.32 0 1.09.29 2.12.8 3H4a2 2 0 0 1-2-2V3l1.67 1.67L5.33 3 7 4.67 8.67 3l1.66 1.67L12 3l1.67 1.67L15.33 3 17 4.67 18.67 3l1.66 1.67L22 3v10.5a6.137 6.137 0 0 0-4-1.5c-1.23 0-2.37.37-3.32 1H13m-2 6v-6H4v6h7z"/></svg>
+
+    </a>
+    Interpretable Spam Filters
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../intro/" class="md-nav__link">
+        Introduction
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data/" class="md-nav__link">
+        Dataset
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../model/" class="md-nav__link">
+        Modeling
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Interpretable Machine Learning
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Interpretable Machine Learning
+      </a>
+      
+        
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#feature-importance" class="md-nav__link">
+    Feature Importance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship-between-target-features" class="md-nav__link">
+    Relationship between Target &amp; Features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactions" class="md-nav__link">
+    Interactions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-surrogate-models" class="md-nav__link">
+    Global Surrogate Models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-methods" class="md-nav__link">
+    Local Methods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-of-interpretable-methods" class="md-nav__link">
+    Comparison of Interpretable Methods
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../conc/" class="md-nav__link">
+        Conclusion
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#feature-importance" class="md-nav__link">
+    Feature Importance
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#relationship-between-target-features" class="md-nav__link">
+    Relationship between Target &amp; Features
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#interactions" class="md-nav__link">
+    Interactions
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#global-surrogate-models" class="md-nav__link">
+    Global Surrogate Models
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-methods" class="md-nav__link">
+    Local Methods
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#comparison-of-interpretable-methods" class="md-nav__link">
+    Comparison of Interpretable Methods
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="interpretable-machine-learning">Interpretable Machine Learning<a class="headerlink" href="#interpretable-machine-learning" title="Permanent link">&para;</a></h1>
+<p>As shown in previous sections of this report, black box models like SVM and random forest outperformed interpretable algorithms. Therefore, it is necessary to add a layer of interpretability to our analysis. Interpretable machine learning methods will help us deal with opacity of machine learning models and  explain hypotheses about attributes and their connection to the target variable.</p>
+<p>From the scammers' point of view, our goal is to improve spam emails so that they pass spam filters. Therefore, the following questions or hypotheses are analyzed with the help of interpretable machine learning methods:</p>
+<ul>
+<li>Which measures about the frequency of words, characters or capital letters in the email should a scammer focus on? Which are the most influential ones?</li>
+<li>Is there a threshold for words, characters or capital letters that the scammer's email should not exceed?</li>
+<li>Are there combinations of words which lead to classification as spam?</li>
+</ul>
+<p>More precisely,</p>
+<ul>
+<li>Do many exclamation marks lead to a classification as spam?</li>
+<li>Do many words in capital letters influence the prediction?</li>
+<li>Do some characters influence the model only within certain thresholds?</li>
+<li>Are there strong interactions between finance related words or characters, e.g. <code>free</code>, <code>money</code>, <code>credit</code> or <code>$</code>?</li>
+</ul>
+<p>In general, our aim is to uncover interesting connections between the features and the target variable. It is also of interest if those connections differ between different model classes. E.g are the same words important for predictions in kernel-based algorithms (like SVMs) and tree-based models (like random forests)?</p>
+<p>For this purpose, interpretable machine learning methods such as feature importance, the relationship between target and features (ICE/PDP/ALE), interactions, surrogate models and local models will be introduced and applied to black-box models.</p>
+<h2 id="feature-importance">Feature Importance<a class="headerlink" href="#feature-importance" title="Permanent link">&para;</a></h2>
+<p>Permutation feature importance is, as the name suggests, a method to quantify the importance of a feature. It is measured by calculating the increase in the model’s prediction error after permuting the feature of interest. We measure the prediction error for a specific model with 1-AUC so that a higher AUC leads to a lower error. Since the absolute value is not informative, the ratio between the error of the permuted model and the original model is calculated instead.</p>
+<p>Intuitively, permuting or shuffling all values of a feature destroys any relationship between the given feature and the target. If the error increases by breaking the relationship, the given feature must have been important for model prediction.</br></br></p>
+<p align='center' float="left">
+<img src="/assets/plots/imp_ranger_pers.png" width="350" /><img src="/assets/plots/imp_ranger_non_pers.png" width="350" />
+<img src="/assets/plots/imp_svm_pers.png" width="350" /><img src="/assets/plots/imp_svm_non_pers.png" width="350" /></br>
+Permutation Feature Importance for random forest and SVM
+</p>
+
+<p>Analyzing the figure above enables us to make statements about the permutation feature importance, such as:</p>
+<ul>
+<li>Permuting the proportion of exclamation marks (<code>!</code>) in an email results in a 10 times increase of 1-AUC compared to the original model, when using the personalized random forest model. For non-personalized random forest, the error increases even fifteenfold.</li>
+<li>The top-3 important features (<code>!</code>, <code>remove</code> and <code>free</code>) are the same for the personalized and non-personalized random forest model, as well as for the non-personalized SVM model. Considering the scammers do not know which spam filter is used, this consistency is helpful for setting up rules.</li>
+<li><code>hp</code> is one of the five most important features in the personalized random forest model, with an importance of 4.4. Knowing the recipient's employer is therefore quite important for discriminating between spam and non-spam.</li>
+<li>The personalized words <code>george</code> and <code>hp</code> are by far the most important features for personalized SVM with a feature importance of 3.6, or 3.4 respectively. If there is the possibility to determine the recipient's name or other personal information it should be mentioned in the email as well.</li>
+<li>The feature importance for most features in random forest is notably higher than for SVM. This might be due to the fact that in random forests splits happen based on specific features, whereas SVMs rely on support vectors, which are specific observations and are therefore made up of all features. However statements on how to improve spam mails cannot be made.</li>
+</ul>
+<p>The importance of features is quite consistent whether personalized features are included or not. Therefore, from now on, we will only apply interpretable machine learning methods on the whole dataset, i.e. the dataset including personalized variables.</p>
+<h2 id="relationship-between-target-features">Relationship between Target &amp; Features<a class="headerlink" href="#relationship-between-target-features" title="Permanent link">&para;</a></h2>
+<p>Now that we know which features are important for the model's prediction, it is now of interest to understand the nature of the impact. Is there a positive or negative influence on the prediction? Is the relationship linear, monotonic, or more complex?
+One method for answering these questions is to use partial dependency plots (PDP). They can be used to visualize the relationship between one or two features and the target. The partial dependence function is estimated by:</p>
+<p>
+<script type="math/tex; mode=display">\hat{f}_{x_S}(x_S)=\frac{1}{n}\sum_{i=1}^n\hat{f}(x_S,x^{(i)}_{C})</script>
+</p>
+<p>where <script type="math/tex">x_S</script> are the features we are interested in and all other features are in <script type="math/tex">x_C</script>. We basically average the prediction for a specific value of <script type="math/tex">x_S</script> over all instances and obtain marginalized effects by this way.</p>
+<p>The PDP assumes uncorrelated features, since there would be highly unlikely or even impossible feature combinations considered otherwise. Luckily features which were shown to be important in <a href="./#feature-importance">Feature Importance</a>, show little to no correlations and we can apply this method for further insights.</p>
+<p>If you don't plot the average effect over all instances, but instead draw a line for each observation we obtain the individual conditional expectation (ICE). ICE plots show how the instance’s prediction changes when the feature value changes. One advantage of ICE plots compared to PDP plots is that interactions can be uncovered, if the ICE-lines are not parallel, but cross each other.</p>
+<p>In figure below you can see that as the number of <code>!</code> in an email increases, the marginal spam probability increases for both random forest and SVM. For the random forest model, there are several small jumps in the PDP curve (orange line, e.g., at 0.1 or 0.8), while for SVM it is quite smooth. This could be due to the fact that random forest models are based on certain split points for variables, while SVM is based on the distance of observations to support vectors, which is continuous. This relationship is plausible to the extent that many exclamation marks suggest a sense of urgency, which is a common tactic in spam emails.</br></br></p>
+<p align='center' float="left">
+<img src="/assets/plots/pdp_ice_charExclamation_ranger.png" width="350" /><img src="/assets/plots/pdp_ice_charExclamation_svm.png" width="350" /></br>
+Centered ICE curves (black) and PDP (orange) for "!"
+</p>
+
+<p>On the other hand, the presence of the word <code>hp</code> lowers the probability of spam in both the random forest and the SVM (see figure below). This is also plausible, as the knowledge of the recipient's employer shows that the email was sent from a known individual and is not spam sent to multiple people at once. Another explanation might be that the email is sent from within the company and <code>hp</code> is in the sender's email signature. In figure below you can see that for random forest there is a steep drop between 0 and 0.5. Above that, the PDP is almost flat. This indicates that the mere mention of <code>hp</code> is enough to reduce the spam probability, and flooding the email with the employer's name does not help to pass spam filters.</br></br></p>
+<p align='center' float="left">
+<img src="/assets/plots/pdp_ice_hp_ranger.png" width="350" /><img src="/assets/plots/pdp_ice_hp_svm.png" width="350" /></br>
+Centered ICE curves (black) and PDP (orange) for "hp"
+</p>
+
+<p>As the ICE curves for random forest are all parallel, we do not expect much interaction for the variables <code>charExclamation</code> or <code>hp</code>. However, if we closely look at the ICE curve for <code>charExclamation</code> in the SVM model we can see two different courses:  for some ICE lines the effect continuously increases for increasing values, whereas some lines seem almost flat for increasing values of <code>charExclamation</code>. This might indicate interactions, which will further be analyzed in <a href="./#interactions">Interactions</a>.</p>
+<p>As already mentioned, partial dependence plots might be misleading, if correlations among features exist.</p>
+<p>An unbiased and less computationally intensive alternative to partial dependence plots are accumulated local effect (ALE) plots. The accumulated local effects measure the difference in prediction in a small range around the desired feature value, instead of averaging the prediction over all observations.</p>
+<p>In the figures below you can see the ALE plots for the top 12 most important features based on permutation feature importance (see Section <a href="./#feature-importance">Feature Importance</a>).
+In the rugs below each ALE plot it can be seen that most variables are highly right-skewed, i.e. high density in low values and little observations/low density in high feature values. When looking at <code>charExclamation</code> for example, you can see that most emails have values below 10, but there are two outliers, one close to 20 and one above 30. This makes it difficult to properly see the curve of ALE plots in the relevant areas. Thus, PDP plots above were cut off at the 0.95 quantile.</br></br></p>
+<p align='center'>
+<img src="/assets/plots/ale_ranger.png" width="600" /></br>
+Accumulated Local Effects (ALE) for random forest
+</p>
+
+<p align='center'>
+<img src="/assets/plots/ale_svm.png" width="600" /></br>
+Accumulated Local Effects (ALE) for SVM
+</p>
+
+<p>However, it is possible to see the general direction in which a feature influences the prediction. For random forest, most features have a positive influence on the spam probability. For the features <code>charExclamation</code>, <code>remove</code>, <code>free</code>, etc. we see that the average prediction is below zero at feature values of zero and quickly increases as the feature values increase. This shows that when those words are  common in an email the spam probability increases. The only word that lowers spam probability is <code>george</code>.</p>
+<p>When we now look at the ALE plots for SVM, we make slightly different observations. The three most important features/words rather shift the prediction for an email towards non-spam, whereas in random forest the top four words indicate spam. The words/characters that suggest spam in SVM, like <code>charExclamation</code>, <code>remove</code>, <code>charDollar</code> and <code>free</code>, initially increase the average predicted spam probability. The ALE sharply drops into negative areas at higher values. However, this should not be too relevant for the actual predictions, since almost no emails contain such a high amount of these words/characters.  We can therefore conclude that increasing the word or character count for <code>charExclamation</code>, <code>remove</code>, <code>charDollar</code> and <code>free</code> by a reasonable amount increases the spam probability and scammers need to be careful when using those words/characters in their spam mail.</p>
+<h2 id="interactions">Interactions<a class="headerlink" href="#interactions" title="Permanent link">&para;</a></h2>
+<p>To analyze whether the effect of one feature depends on the value of another feature, we will consider feature interactions.</p>
+<p>A measurement called H-statistic, which was introduced in <a href="https://projecteuclid.org/journals/annals-of-applied-statistics/volume-2/issue-3/Predictive-learning-via-rule-ensembles/10.1214/07-AOAS148.full" target="_blank">this article</a>, can be used as an estimate for interaction strength. The H-statistic measures the share of the prediction function's variance that is explained by the interaction and can be used to assess various kinds of interactions. H-statistics could be very helpful to answer questions like <code>Are there combinations of words which lead to classification as spam?</code>.</p>
+<p>The H-statistic values for the overall interaction strength of a given feature to all other features can be found in f,gure below. It can be seen that the interactions in Random Forest are rather weak, where the strongest interacting word <code>remove</code> has a interaction strength of 0.15. This means that less than 15% of the variance of <script type="math/tex">\hat{f}</script> are explained by interactions.</br></br>  </p>
+<p align='center' float="left">
+<img src="/assets/plots/ia.png" width="350" /><img src="/assets/plots/ia_svm.png" width="350" /></br>
+H-Statistic
+</p>
+
+<p>Looking at the SVM, there are two features with particularly high interactions, namely <code>receive</code> and <code>charExclamation</code>. The two-way interactions for these features can be seen in figure below. There we also see that almost 100% of the total variance of <script type="math/tex">PD_{jk}</script> is explained by the interaction between <code>receive</code> and <code>email</code>.</br></br></p>
+<p align='center' float="left">
+<img src="/assets/plots/ia_svm_receive.png" width="350" /><img src="/assets/plots/ia_svm_charExclamation.png" width="350" /></br>
+H-Statistic 2-way Interaction
+</p>
+
+<p>Now, if we further analyze the relationship between the two variables, we see that there is a very strong positive influence on spam probability when the occurrence of <code>email</code> is low and the percentage of <code>receive</code> of all words in the email is above 2% (see figure below). However, there are only two emails with such a high occurrence of the word <code>receive</code>, and they both happen to be <code>spam</code>. Using interpretability methods, we found regions where the SVM strongly overfits, and if this model would be used in real spam filters, we would need to correct this behavior. When looking at the ALE plot in figure below, we can also verify this overfitting, since the curve is almost flat in the range between 0 and 0.5 and sharply drops afterwards.</br></br></p>
+<p align='center' float="left">
+<img src="/assets/plots/pdp_svm_email_receive.png" width="350" /><img src="/assets/plots/ale_svm_receive.png" width="350" /></br>
+PDP for "email" and "receive", as well as ALE for "receive"
+</p>
+
+<p>Since most H-statistics are quite low, we can say that scammers do not need to take care of interacting words and can try to minimize the spam probability for each feature independently.</p>
+<h2 id="global-surrogate-models">Global Surrogate Models<a class="headerlink" href="#global-surrogate-models" title="Permanent link">&para;</a></h2>
+<p>The general goal of using interpretable machine learning methods is to understand how predictions are formed. Therefore, perhaps the most straightforward method would be to simply estimate the model's predictions by using an inherently interpretable model. This is exactly what global surrogate models do. More specifically, they are simpler interpretable models that are trained to estimate the predictions of the non-interpretable model.</p>
+<p>By this approach, predictions from random forest and SVM are approximated by a single classification tree with a depth of 2.</p>
+<p>The surrogate tree for random forest can be seen in the figure below. In the first node, we subset the data based on whether <code>your</code> occurs less or more than in 0.4% of all words. If <code>your</code> makes up at most 0.4% of the words we check the value for <code>charDollar</code>. If <code>charDollar</code> is lower than or equal to 0.055%, the instance will be classified as non-spam, otherwise the email is classified as spam. On the other side of the tree, when the value for <code>your</code> is above 0.4%, the tree splits the data based on the value of <code>hp</code>. If <code>hp</code> is lower than or equal to 0.11%, the email is classified as spam, when it is higher it will be classified as non-spam. The random forest surrogate tree predicts 82.2%  of the email classes correctly and has a false positive rate of 18.6%. This suggests that the majority of predictions can be reasonably approximated by the surrogate and scammers should be aware of their use of <code>your</code>, <code>!</code> and <code>hp</code>.</br></br></p>
+<p align='center'>
+<img src="/assets/plots/ranger_surrogate_tree.png" width="600" /></br>
+Random Forest Surrogate Tree
+</p>
+
+<p>The surrogate tree for SVM slightly differs from the one for random forest (see the figure below). Just as for random forest the surrogate tree for SVM initially splits at <code>your</code>. However, the threshold is a little higher at 0.59%. The first node where the SVM surrogate differs from the random forest surrogate is when the value for <code>your</code> is below 0.59%. There we split based on the value of <code>num000</code> and not based on the fraction of <code>$</code> in the email. If <code>num000</code> is at most 0.15%, we predict an email to be non-spam, whereas the prediction is spam when <code>000</code> make up more than 0.15% of all characters. Interestingly enough, the split-rule when <code>your</code> is above 0.59% is identical to the one from random forest and emails are classified as spam if <code>hp</code> is at most 0.11% and are classified as non-spam otherwise. The SVM surrogate tree has a very similar prediction accuracy of 82.1% as the random forest surrogate tree. However, the SVM surrogate's false positive ratio is a little better with 15%. So for both models it is reasonable to use surrogate models to understand how predictions are made.</p>
+<p>Concluding we can say that even though both trees share the first split variable the threshold is a little higher in the SVM surrogate. However, if the occurrence of <code>your</code> is above the respective thresholds both trees split equally in the next node. The decision criterion if the email does not exceed the threshold of <code>your</code> differs. The random forest surrogate relies on the variable <code>charDollar</code>, whereas the SVM surrogate splits based on <code>num000</code>. However, both variables relate to financial scams or money in the broader sens. Since both surrogate trees are quite similar, scammers should be careful when using words related to financial scams and should definitely include the companies name if they can somehow guess it from the email domain.</p>
+<h2 id="local-methods">Local Methods<a class="headerlink" href="#local-methods" title="Permanent link">&para;</a></h2>
+<p>Local methods are used to interpret the predictions of the black box model at the instance level. In our case, the goal of using local methods is to understand why the SVM or random forest models made incorrect predictions for some emails. About 40 instances are incorrectly predicted by both models. For better understanding, we will focus on two different instances:</p>
+<ol>
+<li>One instance that is incorrectly predicted by random forest but correctly predicted by SVM.</li>
+<li>One instance that is incorrectly predicted by SVM but correctly predicted by random forest.</li>
+</ol>
+<p>To understand how the models made predictions for those specific emails Shapley values and Ceteris Paribus Profiles will be introduced.</p>
+<p>Shapley values help us to measure each feature’s contribution to the prediction of an instance, more precisely they measure how much a feature contributed to the prediction compared to the average prediction. They are calculated by averaging the marginal payout or contribution for each feature. Assuming we are interested in the contribution of feature x. First, the prediction for every combination of features not including x is calculated. Then we measure the marginal contribution of x, i.e. how adding x to each combination changes the prediction. Finally, all marginal contributions are averaged and we obtain the Shapley value for feature x. Since there are many possible coalitions of the feature values, calculating Shapley values is computationally expensive.</p>
+<p>Spam is coded as <code>1</code> and non-spam as <code>0</code>, each email which has a higher score/prediction than 0.5 will be classified as spam. We will now focus on a spam mail, which was incorrectly predicted as non-spam by random forest with a predicted value of 0.42, but correctly predicted by SVM with a prediction of 0.53 If we look at the figure below, we can see how each feature value changes the prediction from the intercept (vertical dashed line, at 0.385) either in the spam (green/positive values) or non-spam (red/negative values) direction. 0.6\% of words are <code>remove</code>, <code>george</code> is not mentioned at all and <code>free</code> makes up 0.34% of all words, all this makes the prediction move in the direction of <code>spam</code>. However, <code>hp</code> and <code>hpl</code> (which stands for Hewlett Packard Labs) make up 0.34% of words each and move the prediction in the direction of <code>non-spam</code>. As we saw in <a href="./#relationship-between-target-features">Relationship between Target &amp; Features</a> and <a href="./#global-surrogate-models">Global Surrogate Models</a> naming the company is a strong indicator for non-spam and that is why the email was incorrectly predicted by random forest.</br></br></p>
+<p align='center'>
+<img src="/assets/plots/ranger_false.png" width="700" /></br>
+Shapley values for a chosen spam mail which is incorrectly classified by random forest with a prediction of 0.42. The vertical dashed, blue line shows the average prediction (0.385). The green and red bars show the Shapley values for each feature value. Summing up the intercept/average prediction and all Shapley values results in the predicted value
+</p>
+
+<p>If we now compare which features have high absolute values of Shapley values in the SVM model in figure below, we see that only the average and total run length of capital letters (<code>capitalAve</code> and <code>capitalTotal</code>) and the number of <code>!</code> (<code>charExclamation</code>) make the email seem non-spam. There are however many other words that can compensate this, like <code>remove</code>, <code>you</code> or <code>our</code>. Additionally, the longest run length of capital letters is 15 (<code>capitalLong</code>) which is quite long and therefore suspicious. Finally, SVM is able to correctly recognize this email as spam.</br></br></p>
+<p align='center'>
+<img src="/assets/plots/svm_true.png" width="700" /></br>
+Shapley values for a chosen spam mail which is correctly classified by SVM with a prediction of 0.53
+</p>
+
+<p>As we can see this email was not obviously spam, as both models predicted values close to the decision threshold of 0.5. It is however important to note that scammers usually do not know which spam filter is applied by certain email providers and there is no way of knowing if the email actually reaches the potential victim. All scammers can do is to avoid obvious spam criteria and hope spam filters can be fooled.</p>
+<p>Ceteris Paribus Profiles are identical to individual conditional expectation curves (ICE) that were introduced in <a href="./#relationship-between-target-features">Relationship between Target &amp; Features</a>. In summary, Ceteris Paribus profiles help us to assess how the model’s prediction would change if the value of a feature changes.</p>
+<p>In the figure below, it can be seen that even a small increase in the occurrence of <code>remove</code>, as well as the number of exclamation marks or capital letters in the email would increase the predicted value for SVM (blue line). In the random forest model the increase in prediction would not be that substantial (light green line). Increasing the number <code>hp</code> occurs in the email would decrease the prediction for both SVM and random forest. Again, there would be a great decrease for SVM and a smaller decrease for random forest.</br></br></p>
+<p align='center'>
+<img src="/assets/plots/cp1.png" width="600" /></br>
+Ceteris Paribus Profiles for a chosen spam mail
+</p>
+
+<p>We will now consider a non-spam email, which is correctly classified by random forest with a prediction of 0.22 and incorrectly classified by SVM with a prediction of 0.52.</p>
+<p>In the figure below representing shapley values for random forest prediction,  you can see that the occurrence of the word <code>edu</code> has a significant impact on the prediction as non-spam. The positive effect of <code>remove</code> is quite big, but cannot compensate for the negative effect of <code>edu</code>. Random forest is able to correctly classify the email as non-spam.</br></br></p>
+<p align='center'>
+<img src="/assets/plots/ranger_true.png" width="700" /></br>
+Shapley values for a chosen non-spam mail which is correctly classified by random forest with a prediction of 0.22
+</p>
+
+<p>Different than in random forest, <code>edu</code> is not one of the top Shapley values for SVM for this email (see figure below). Instead, the SVM focuses more on the fact that words like <code>will</code>, <code>hp</code>, <code>hpl</code> do not exist in the email.</br></br></p>
+<p align='center'>
+<img src="/assets/plots/svm_false.png" width="700" /></br>
+Shapley values for a chosen non-spam mail which is incorrectly classified by SVM with a prediction of 0.52
+</p>
+
+<p>For further analysis, ceteris-paribus profiles for this instance are plotted below.</br></br></p>
+<p align='center'>
+<img src="/assets/plots/cp2.png" width="600" /></br>
+Ceteris Paribus Profiles for a chosen non-spam mail
+</p>
+
+<p>In the plot above, it can be seen that the effect of <code>edu</code> and <code>cs</code> drops more sharply in the random forest model. In this specific email, the SVM prediction changes to non-spam even for a small increase in <code>hp</code> and <code>will</code>.</p>
+<h2 id="comparison-of-interpretable-methods">Comparison of Interpretable Methods<a class="headerlink" href="#comparison-of-interpretable-methods" title="Permanent link">&para;</a></h2>
+<p>So far we saw that the different interpretable machine learning methods were consistent with each other concerning how certain feature values impact the prediction. PDP, or ALE plots as well as surrogate models or individual Shapley values showed that personalizing the email is an indicator for non-spam. Whereas many occurrences of exclamation marks or words like <code>free</code> or <code>remove</code> are strong indicators for spam.</p>
+<p>Now we want to asses whether the feature importance is also consistent when using a Shapley based measure instead of permutation feature importance. For each feature, the Shapley feature importance is the mean absolute value of the Shapley values of all observations. This means that features which have high (absolute) Shapley values for many emails have a high importance in general. A comparison of both importance measures can be found in the figure below.</br></br></p>
+<p align='center' float="left">
+<img src="/assets/plots/shapley_fi.png" width="358" /><img src="/assets/plots/imp_ranger_bar.png" width="350" /></br>
+Comparison of Feature Importance Plots for Random Forest
+</p>
+
+<p>For both measures, the frequency of exclamation points is the most important variable for classification as spam or non-spam. In addition, the variables <code>hp</code>, <code>remove</code>, <code>charDollar</code>, <code>free</code>, and variables concerning capital letters have high values in both importance measures with only a slight change in order. Therefore, both importance measures agree with each other and we can reasonably assume that those features are essential for the random forest's prediction.</p>
+<p>If we now want to assess the shape of the influence on the prediction we can not only look at PDP plots, but on SHAP dependence plots as well. SHAP dependence plots show the marginal effect of a feature value on the prediction, by plotting Shapley values for all emails against the respective feature value. We can therefore see for which feature values the Shapley values are positive and push the prediction to <code>spam</code> and where the Shapley values are negative and decrease the spam probability.</p>
+<p>The marginal effect of the value of <code>hp</code> on the prediction is visualized with SHAP dependence plot and partial dependence plot in the figure below.</br></br></p>
+<p align='center' float="left">
+<img src="/assets/plots/shap_hp.png" width="358" /><img src="/assets/plots/pdp_hp.png" width="370" /></br>
+Comparison of Feature Importance Plots for Random Forest
+</p>
+
+<p>By looking at the shapley values figure, we see that for <code>hp</code> = 0 most Shapley values are between 0 and 0.05, which especially means they are positive and increase the spam probability. As soon as the value for <code>hp</code> increases we see a sharp drop and almost all Shapley values are between -0.05 and -0.20. Similar to the findings of the PDP plot, increasing the number of <code>hp</code> does not decrease the Shapley value in general. Many Shapley values for <code>hp</code> between 2 and 20 are around -0.05, which is the same value that is already reached at <code>hp</code> = 0.1. Again, we can confirm our findings, that mentioning the company name is enough to decrease the spam probability.</p>
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" data-md-state="hidden">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../model/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Modeling" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Modeling
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../conc/" class="md-footer__link md-footer__link--next" aria-label="Next: Conclusion" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Conclusion
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+          <div class="md-footer-copyright__highlight">
+            Copyright &copy; 2020 - 2021 Utku Can Ozturk
+          </div>
+        
+        Made with
+        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+          Material for MkDocs
+        </a>
+        
+      </div>
+      
+  <div class="md-footer-social">
+    
+      
+      
+        
+        
+      
+      <a href="https://github.com/utkucanozturk/" target="_blank" rel="noopener" title="github.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512"><path d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://linkedin.com/in/utkucanozturk/" target="_blank" rel="noopener" title="linkedin.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://instagram.com/utkucanozturk/" target="_blank" rel="noopener" title="instagram.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg>
+      </a>
+    
+      
+      
+        
+        
+      
+      <a href="https://facebook.com/ucozturk/" target="_blank" rel="noopener" title="facebook.com" class="md-footer-social__link">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg>
+      </a>
+    
+  </div>
+
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.annotate", "content.tabs.link", "navigation.instant", "navigation.tracking", "navigation.tabs", "navigation.top", "navigation.sections", "search.highlight", "search.share", "search.suggest"], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.febc23d1.min.js"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      
+    
+  </body>
+</html>
