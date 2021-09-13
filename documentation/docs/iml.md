@@ -64,7 +64,7 @@ Centered ICE curves (black) and PDP (orange) for "!"
 On the other hand, the presence of the word `hp` lowers the probability of spam in both the random forest and the SVM (see figure below). This is also plausible, as the knowledge of the recipient's employer shows that the email was sent from a known individual and is not spam sent to multiple people at once. Another explanation might be that the email is sent from within the company and `hp` is in the sender's email signature. In figure below you can see that for random forest there is a steep drop between 0 and 0.5. Above that, the PDP is almost flat. This indicates that the mere mention of `hp` is enough to reduce the spam probability, and flooding the email with the employer's name does not help to pass spam filters.</br></br>
 
 <p align='center' float="left">
-<img src="assets/plots/pdp_ice_hp_ranger.png" width="350" /><img src="assets/plots/pdp_ice_hp_svm.png" width="350" /></br>
+<img src="../assets/plots/pdp_ice_hp_ranger.png" width="350" /><img src="../assets/plots/pdp_ice_hp_svm.png" width="350" /></br>
 Centered ICE curves (black) and PDP (orange) for "hp"
 </p>
 
@@ -78,12 +78,12 @@ In the figures below you can see the ALE plots for the top 12 most important fea
 In the rugs below each ALE plot it can be seen that most variables are highly right-skewed, i.e. high density in low values and little observations/low density in high feature values. When looking at `charExclamation` for example, you can see that most emails have values below 10, but there are two outliers, one close to 20 and one above 30. This makes it difficult to properly see the curve of ALE plots in the relevant areas. Thus, PDP plots above were cut off at the 0.95 quantile.</br></br>
 
 <p align='center'>
-<img src="assets/plots/ale_ranger.png" width="600" /></br>
+<img src="../assets/plots/ale_ranger.png" width="600" /></br>
 Accumulated Local Effects (ALE) for random forest
 </p>
 
 <p align='center'>
-<img src="assets/plots/ale_svm.png" width="600" /></br>
+<img src="../assets/plots/ale_svm.png" width="600" /></br>
 Accumulated Local Effects (ALE) for SVM
 </p>
 
@@ -100,21 +100,21 @@ A measurement called H-statistic, which was introduced in [this article](https:/
 The H-statistic values for the overall interaction strength of a given feature to all other features can be found in f,gure below. It can be seen that the interactions in Random Forest are rather weak, where the strongest interacting word `remove` has a interaction strength of 0.15. This means that less than 15% of the variance of \(\hat{f}\) are explained by interactions.</br></br>  
 
 <p align='center' float="left">
-<img src="assets/plots/ia.png" width="350" /><img src="assets/plots/ia_svm.png" width="350" /></br>
+<img src="../assets/plots/ia.png" width="350" /><img src="../assets/plots/ia_svm.png" width="350" /></br>
 H-Statistic
 </p>
 
 Looking at the SVM, there are two features with particularly high interactions, namely `receive` and `charExclamation`. The two-way interactions for these features can be seen in figure below. There we also see that almost 100% of the total variance of \(PD_{jk}\) is explained by the interaction between `receive` and `email`.</br></br>
 
 <p align='center' float="left">
-<img src="assets/plots/ia_svm_receive.png" width="350" /><img src="assets/plots/ia_svm_charExclamation.png" width="350" /></br>
+<img src="../assets/plots/ia_svm_receive.png" width="350" /><img src="../assets/plots/ia_svm_charExclamation.png" width="350" /></br>
 H-Statistic 2-way Interaction
 </p>
 
 Now, if we further analyze the relationship between the two variables, we see that there is a very strong positive influence on spam probability when the occurrence of `email` is low and the percentage of `receive` of all words in the email is above 2% (see figure below). However, there are only two emails with such a high occurrence of the word `receive`, and they both happen to be `spam`. Using interpretability methods, we found regions where the SVM strongly overfits, and if this model would be used in real spam filters, we would need to correct this behavior. When looking at the ALE plot in figure below, we can also verify this overfitting, since the curve is almost flat in the range between 0 and 0.5 and sharply drops afterwards.</br></br>
 
 <p align='center' float="left">
-<img src="assets/plots/pdp_svm_email_receive.png" width="350" /><img src="assets/plots/ale_svm_receive.png" width="350" /></br>
+<img src="../assets/plots/pdp_svm_email_receive.png" width="350" /><img src="../assets/plots/ale_svm_receive.png" width="350" /></br>
 PDP for "email" and "receive", as well as ALE for "receive"
 </p>
 
@@ -129,7 +129,7 @@ By this approach, predictions from random forest and SVM are approximated by a s
 The surrogate tree for random forest can be seen in the figure below. In the first node, we subset the data based on whether `your` occurs less or more than in 0.4% of all words. If `your` makes up at most 0.4% of the words we check the value for `charDollar`. If `charDollar` is lower than or equal to 0.055%, the instance will be classified as non-spam, otherwise the email is classified as spam. On the other side of the tree, when the value for `your` is above 0.4%, the tree splits the data based on the value of `hp`. If `hp` is lower than or equal to 0.11%, the email is classified as spam, when it is higher it will be classified as non-spam. The random forest surrogate tree predicts 82.2%  of the email classes correctly and has a false positive rate of 18.6%. This suggests that the majority of predictions can be reasonably approximated by the surrogate and scammers should be aware of their use of `your`, `!` and `hp`.</br></br>
 
 <p align='center'>
-<img src="assets/plots/ranger_surrogate_tree.png" width="600" /></br>
+<img src="../assets/plots/ranger_surrogate_tree.png" width="600" /></br>
 Random Forest Surrogate Tree
 </p>
 
@@ -151,14 +151,14 @@ Shapley values help us to measure each feature’s contribution to the predictio
 Spam is coded as `1` and non-spam as `0`, each email which has a higher score/prediction than 0.5 will be classified as spam. We will now focus on a spam mail, which was incorrectly predicted as non-spam by random forest with a predicted value of 0.42, but correctly predicted by SVM with a prediction of 0.53 If we look at the figure below, we can see how each feature value changes the prediction from the intercept (vertical dashed line, at 0.385) either in the spam (green/positive values) or non-spam (red/negative values) direction. 0.6\% of words are `remove`, `george` is not mentioned at all and `free` makes up 0.34% of all words, all this makes the prediction move in the direction of `spam`. However, `hp` and `hpl` (which stands for Hewlett Packard Labs) make up 0.34% of words each and move the prediction in the direction of `non-spam`. As we saw in [Relationship between Target & Features](iml.md#relationship-between-target-features) and [Global Surrogate Models](iml.md#global-surrogate-models) naming the company is a strong indicator for non-spam and that is why the email was incorrectly predicted by random forest.</br></br>
 
 <p align='center'>
-<img src="assets/plots/ranger_false.png" width="700" /></br>
+<img src="../assets/plots/ranger_false.png" width="700" /></br>
 Shapley values for a chosen spam mail which is incorrectly classified by random forest with a prediction of 0.42. The vertical dashed, blue line shows the average prediction (0.385). The green and red bars show the Shapley values for each feature value. Summing up the intercept/average prediction and all Shapley values results in the predicted value
 </p>
 
 If we now compare which features have high absolute values of Shapley values in the SVM model in figure below, we see that only the average and total run length of capital letters (`capitalAve` and `capitalTotal`) and the number of `!` (`charExclamation`) make the email seem non-spam. There are however many other words that can compensate this, like `remove`, `you` or `our`. Additionally, the longest run length of capital letters is 15 (`capitalLong`) which is quite long and therefore suspicious. Finally, SVM is able to correctly recognize this email as spam.</br></br>
 
 <p align='center'>
-<img src="assets/plots/svm_true.png" width="700" /></br>
+<img src="../assets/plots/svm_true.png" width="700" /></br>
 Shapley values for a chosen spam mail which is correctly classified by SVM with a prediction of 0.53
 </p>
 
@@ -169,7 +169,7 @@ Ceteris Paribus Profiles are identical to individual conditional expectation cur
 In the figure below, it can be seen that even a small increase in the occurrence of `remove`, as well as the number of exclamation marks or capital letters in the email would increase the predicted value for SVM (blue line). In the random forest model the increase in prediction would not be that substantial (light green line). Increasing the number `hp` occurs in the email would decrease the prediction for both SVM and random forest. Again, there would be a great decrease for SVM and a smaller decrease for random forest.</br></br>
 
 <p align='center'>
-<img src="assets/plots/cp1.png" width="600" /></br>
+<img src="../assets/plots/cp1.png" width="600" /></br>
 Ceteris Paribus Profiles for a chosen spam mail
 </p>
 
@@ -178,21 +178,21 @@ We will now consider a non-spam email, which is correctly classified by random f
 In the figure below representing shapley values for random forest prediction,  you can see that the occurrence of the word `edu` has a significant impact on the prediction as non-spam. The positive effect of `remove` is quite big, but cannot compensate for the negative effect of `edu`. Random forest is able to correctly classify the email as non-spam.</br></br>
 
 <p align='center'>
-<img src="assets/plots/ranger_true.png" width="700" /></br>
+<img src="../assets/plots/ranger_true.png" width="700" /></br>
 Shapley values for a chosen non-spam mail which is correctly classified by random forest with a prediction of 0.22
 </p>
 
 Different than in random forest, `edu` is not one of the top Shapley values for SVM for this email (see figure below). Instead, the SVM focuses more on the fact that words like `will`, `hp`, `hpl` do not exist in the email.</br></br>
 
 <p align='center'>
-<img src="assets/plots/svm_false.png" width="700" /></br>
+<img src="../assets/plots/svm_false.png" width="700" /></br>
 Shapley values for a chosen non-spam mail which is incorrectly classified by SVM with a prediction of 0.52
 </p>
 
 For further analysis, ceteris-paribus profiles for this instance are plotted below.</br></br>
 
 <p align='center'>
-<img src="assets/plots/cp2.png" width="600" /></br>
+<img src="../assets/plots/cp2.png" width="600" /></br>
 Ceteris Paribus Profiles for a chosen non-spam mail
 </p>
 
@@ -205,7 +205,7 @@ So far we saw that the different interpretable machine learning methods were con
 Now we want to asses whether the feature importance is also consistent when using a Shapley based measure instead of permutation feature importance. For each feature, the Shapley feature importance is the mean absolute value of the Shapley values of all observations. This means that features which have high (absolute) Shapley values for many emails have a high importance in general. A comparison of both importance measures can be found in the figure below.</br></br>
 
 <p align='center' float="left">
-<img src="assets/plots/shapley_fi.png" width="358" /><img src="assets/plots/imp_ranger_bar.png" width="350" /></br>
+<img src="../assets/plots/shapley_fi.png" width="358" /><img src="../assets/plots/imp_ranger_bar.png" width="350" /></br>
 Comparison of Feature Importance Plots for Random Forest
 </p>
 
@@ -216,7 +216,7 @@ If we now want to assess the shape of the influence on the prediction we can not
 The marginal effect of the value of `hp` on the prediction is visualized with SHAP dependence plot and partial dependence plot in the figure below.</br></br>
 
 <p align='center' float="left">
-<img src="assets/plots/shap_hp.png" width="358" /><img src="assets/plots/pdp_hp.png" width="370" /></br>
+<img src="../assets/plots/shap_hp.png" width="358" /><img src="../assets/plots/pdp_hp.png" width="370" /></br>
 Comparison of Feature Importance Plots for Random Forest
 </p>
 
