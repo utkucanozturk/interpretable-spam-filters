@@ -669,7 +669,7 @@ However, the straight forward interpretability is lost compared to a single deci
 </p>
 <p>A high <script type="math/tex">\gamma</script> leads to a wiggly boundary which might also lead to overfitting. As you can see in the image below, both parameters have  similar influences on the decision boundary and need to be balanced. As a wide range of combinations of <code>gamma</code> and <code>cost</code> might be suitable, we first tuned on a grid where <code>gamma</code> might take values in <script type="math/tex">[10^{-8}</script>, <script type="math/tex">10^2]</script> and <code>cost</code> in <script type="math/tex">[10^{-2}, 10^8]</script>. A combination close to gamma = 0.01 and cost = 10 was the most promising and therefore a second 5-fold CV was performed for gamma values in [0.001, 0.05] and cost values in [5, 50]. The results of the tuning can be found below. The highest AUC of 0.978 could be achieved with gamma  = 0.012 and cost = 13.33.  As it has shown in <a href="https://www.academia.edu/11678434/Efficient_Support_Vector_Machines_for_Spam_Detection_A_Survey" target="_blank">this article</a>, Support Vector Machines (SVM) are a powerful, state-of-the-art method in machine learning to distinguish spam from non-spam. Thus, we will analyze how SVMs obtain their predictions in more detail in <a href="../iml/">Interpretable Machine Learning</a> section.</br></br></p>
 <figure>
-  <img src="assets/plots/tuning_svm.png" width="600" />
+  <img src="../assets/plots/tuning_svm.PNG" width="600" />
   <figcaption>Performance of different cost and gamma combinations for SVM</figcaption>
 </figure>
 
@@ -726,7 +726,7 @@ However, the straight forward interpretability is lost compared to a single deci
 <h2 id="benchmarking">Benchmarking<a class="headerlink" href="#benchmarking" title="Permanent link">&para;</a></h2>
 <p>The distribution of 5-fold cross-validated AUC values for each model can be found in figure below. There you can also see that models which are inherently not interpretable, like SVM, random forest and xgboost outperformed explainable models like decision trees and logistic regression. It is very likely that email providers use such non-interpretable methods for their spam filters, especially since they are mostly interested in an accurate classification with as little false positives, i.e., emails that are wrongly classified as spam, as possible.</br></br></p>
 <figure>
-  <img src="assets/plots/model_comparison.png" width="600" />
+  <img src="../assets/plots/model_comparison.png" width="600" />
   <figcaption>Performance of prediction algorithms</figcaption>
 </figure>
 
@@ -768,7 +768,7 @@ However, the straight forward interpretability is lost compared to a single deci
 A separate hyperparameter tuning procedure was performed for the non-personalized dataset, and the same parameters were found to be AUC-optimal. This is the reason the same hyperparameters are used for modeling spam probability with non-personalized features as for the personalized dataset.</p>
 <p>In the figure below, it can be seen that both SVM and Random Forest gain AUC when the personalized features are included. This is plausible, as knowing the name or workplace of the recipient is a strong indication that this email is from a known sender and not anonymous spam.</br></br></p>
 <figure>
-  <img src="assets/plots/model_comparison_personalized.png" width="600" />
+  <img src="../assets/plots/model_comparison_personalized.png" width="600" />
   <figcaption>Performance of SVM and random forest with personalized (all features) and non personalized features (removing "george", "hp", "num650")</figcaption>
 </figure>
                 
