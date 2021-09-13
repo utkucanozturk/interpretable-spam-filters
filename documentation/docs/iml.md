@@ -26,8 +26,8 @@ Permutation feature importance is, as the name suggests, a method to quantify th
 Intuitively, permuting or shuffling all values of a feature destroys any relationship between the given feature and the target. If the error increases by breaking the relationship, the given feature must have been important for model prediction.</br></br>
 
 <p align='center' float="left">
-<img src="assets/plots/imp_ranger_pers.png" width="350" /><img src="assets/plots/imp_ranger_non_pers.png" width="350" />
-<img src="assets/plots/imp_svm_pers.png" width="350" /><img src="assets/plots/imp_svm_non_pers.png" width="350" /></br>
+<img src="../assets/plots/imp_ranger_pers.png" width="350" /><img src="../assets/plots/imp_ranger_non_pers.png" width="350" />
+<img src="../assets/plots/imp_svm_pers.png" width="350" /><img src="../assets/plots/imp_svm_non_pers.png" width="350" /></br>
 Permutation Feature Importance for random forest and SVM
 </p>
 
@@ -57,7 +57,7 @@ If you don't plot the average effect over all instances, but instead draw a line
 In figure below you can see that as the number of `!` in an email increases, the marginal spam probability increases for both random forest and SVM. For the random forest model, there are several small jumps in the PDP curve (orange line, e.g., at 0.1 or 0.8), while for SVM it is quite smooth. This could be due to the fact that random forest models are based on certain split points for variables, while SVM is based on the distance of observations to support vectors, which is continuous. This relationship is plausible to the extent that many exclamation marks suggest a sense of urgency, which is a common tactic in spam emails.</br></br>
 
 <p align='center' float="left">
-<img src="assets/plots/pdp_ice_charExclamation_ranger.png" width="350" /><img src="assets/plots/pdp_ice_charExclamation_svm.png" width="350" /></br>
+<img src="../assets/plots/pdp_ice_charExclamation_ranger.png" width="350" /><img src="../assets/plots/pdp_ice_charExclamation_svm.png" width="350" /></br>
 Centered ICE curves (black) and PDP (orange) for "!"
 </p>
 
