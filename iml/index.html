@@ -556,8 +556,8 @@
 <p>Permutation feature importance is, as the name suggests, a method to quantify the importance of a feature. It is measured by calculating the increase in the model’s prediction error after permuting the feature of interest. We measure the prediction error for a specific model with 1-AUC so that a higher AUC leads to a lower error. Since the absolute value is not informative, the ratio between the error of the permuted model and the original model is calculated instead.</p>
 <p>Intuitively, permuting or shuffling all values of a feature destroys any relationship between the given feature and the target. If the error increases by breaking the relationship, the given feature must have been important for model prediction.</br></br></p>
 <p align='center' float="left">
-<img src="assets/plots/imp_ranger_pers.png" width="350" /><img src="assets/plots/imp_ranger_non_pers.png" width="350" />
-<img src="assets/plots/imp_svm_pers.png" width="350" /><img src="assets/plots/imp_svm_non_pers.png" width="350" /></br>
+<img src="../assets/plots/imp_ranger_pers.png" width="350" /><img src="../assets/plots/imp_ranger_non_pers.png" width="350" />
+<img src="../assets/plots/imp_svm_pers.png" width="350" /><img src="../assets/plots/imp_svm_non_pers.png" width="350" /></br>
 Permutation Feature Importance for random forest and SVM
 </p>
 
@@ -581,7 +581,7 @@ One method for answering these questions is to use partial dependency plots (PDP
 <p>If you don't plot the average effect over all instances, but instead draw a line for each observation we obtain the individual conditional expectation (ICE). ICE plots show how the instance’s prediction changes when the feature value changes. One advantage of ICE plots compared to PDP plots is that interactions can be uncovered, if the ICE-lines are not parallel, but cross each other.</p>
 <p>In figure below you can see that as the number of <code>!</code> in an email increases, the marginal spam probability increases for both random forest and SVM. For the random forest model, there are several small jumps in the PDP curve (orange line, e.g., at 0.1 or 0.8), while for SVM it is quite smooth. This could be due to the fact that random forest models are based on certain split points for variables, while SVM is based on the distance of observations to support vectors, which is continuous. This relationship is plausible to the extent that many exclamation marks suggest a sense of urgency, which is a common tactic in spam emails.</br></br></p>
 <p align='center' float="left">
-<img src="assets/plots/pdp_ice_charExclamation_ranger.png" width="350" /><img src="assets/plots/pdp_ice_charExclamation_svm.png" width="350" /></br>
+<img src="../assets/plots/pdp_ice_charExclamation_ranger.png" width="350" /><img src="../assets/plots/pdp_ice_charExclamation_svm.png" width="350" /></br>
 Centered ICE curves (black) and PDP (orange) for "!"
 </p>
 
