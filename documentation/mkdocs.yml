@@ -66,6 +66,8 @@ markdown_extensions:
   - def_list
   - attr_list
   - mdx_math
+  - toc:
+      permalink: True
 
 extra_javascript: 
     - https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-AMS-MML_HTMLorMML

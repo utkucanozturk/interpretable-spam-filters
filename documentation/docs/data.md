@@ -1,6 +1,6 @@
 # Dataset
 
-The dataset was taken from the [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml). It contains information about the content of emails, i.e., occurrences of words and special characters and information about the frequency and run-length of capital letters, as well as the binary target variable indicating whether an email is spam or non-spam \cite{Dua:2019}. The dataset includes 4601 emails and 57 features. In detail, there are:
+The dataset was taken from the [UCI Machine Learning Repository](http://archive.ics.uci.edu/ml){target=_blank}. It contains information about the content of emails, i.e., occurrences of words and special characters and information about the frequency and run-length of capital letters, as well as the binary target variable indicating whether an email is spam or non-spam \cite{Dua:2019}. The dataset includes 4601 emails and 57 features. In detail, there are:
 
 * 48 continuous attributes that measure the frequency of specific words or numbers in the email as a fraction of total words and range from 0 to 100[%]. E.g. "free", "money", "business" or "meeting".
 
