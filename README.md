@@ -12,4 +12,4 @@ Analysis of a dataset to classify emails as spam or non spam.
 | 2     | model selection                |
 | 3     | interpretable ML               |
 
-Full documentation can be found here: https://dssgxuk.github.io/itu/
+Full documentation can be found here: https://utkucanozturk.github.io/interpretable-spam-filters/
